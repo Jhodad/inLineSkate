@@ -1,0 +1,11 @@
+https://rnfirebase.io/reference/
+
+Wrong password and other errors should be one: "invalid email or password" for integrity
+- S_SignIn.js
+- https://firebase.google.com/docs/reference/js/firebase.auth.Auth#signInWithEmailAndPassword
+
+showErrorAlert looks terrible
+- S_SignIn.js, S_SignUp.js
+
+creationSuccesful looks terrible
+- S_SignUp.js
