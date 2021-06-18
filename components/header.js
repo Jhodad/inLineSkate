@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'
-import { NavigationEvents } from 'react-navigation';
+import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Header() {
+export default function Header( {navigation, title}) {
 
     const openMenu = () => {
         navigation.openDrawer()
@@ -13,7 +12,7 @@ export default function Header() {
         <View style={styles.header}>
             <View>
                 <MaterialIcons name='menu' size={28} onPress={openMenu} style={styles.icon} />
-                <Text style={styles.headerText}>InLINE Skate App</Text>
+                <Text style={styles.headerText}>{title}</Text>
             </View>
         </View>
     )
@@ -37,6 +36,7 @@ const styles = StyleSheet.create({
 
     icon : {
         position: 'absolute',
-        left: 16,
+        left: 150
+        
     }
 })

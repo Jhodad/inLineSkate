@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
+import { NavigationActions, StackActions } from 'react-navigation';
 import { firebase } from '../firebase/fire.js';
 
 
@@ -15,7 +16,8 @@ const S_SignIn = ({ navigation }) => {
     const handleSignIn = async () => {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
-                navigation.navigate('Home')
+                resetHandler();  
+                //navigation.navigate('Home');
             })
             .catch(error => {
                 switch (error.code) {
@@ -36,22 +38,32 @@ const S_SignIn = ({ navigation }) => {
                         break;
 
                     default:
-                        showErrorAlert("Other error: ", JSON.stringify(error.message));
+                        console.log("Other error: ", JSON.stringify(error.message));
                 }
             })
     }
+
+    const resetHandler = () => {
+        navigation.dispatch(StackActions.reset({
+            index: 0,
+            key: null,
+            actions: [NavigationActions.navigate({ routeName: 'News' })]
+        }))
+    };            
 
     const showErrorAlert = (errorReceived) => {
         Alert.alert(
             "ERROR:",
             JSON.stringify(errorReceived),
-            {
-                cancelable: true,
-                onDismiss: () =>
-                    Alert.alert(
-                        "This alert was dismissed by tapping outside of the alert dialog."
-                    )
-            }
+            [
+                {
+                    cancelable: true,
+                    onDismiss: () =>
+                        Alert.alert(
+                            "This alert was dismissed by tapping outside of the alert dialog."
+                        )
+                }
+            ]
         )
     };
 

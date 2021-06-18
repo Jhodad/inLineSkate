@@ -1,39 +1,17 @@
-import React from 'react';
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import S_Home from './screens/S_Home';
-import S_SignUp from './screens/S_SignUp';
-import S_SignIn from './screens/S_SignIn';
 import Header from './components/header';
+import Navigator from './routes/drawer';
 
-const screens = {
-  SignIn: {
-    screen: S_SignIn,
-    navigationOptions: {
-      headerTitle: () => <Header />,
-    }
-  },
-  SignUp: {
-    screen: S_SignUp,
-    navigationOptions: {
-      headerTitle: () => <Header />,
-    }
-  },
-  Home: {
-    screen: S_Home,
-    navigationOptions: {
-      headerTitle: () => <Header />,
-    }
-  },
+
+
+export default function App(){
+  return (
+    <NavigationContainer>
+    <Navigator />
+    </NavigationContainer>
+  );
 };
-
-//const App = createAppContainer(stackNavigator);
-
-const App = createStackNavigator(screens, {
-  defaultNavigationOptions: {
-    headerTintColor: '#444',
-    headerStyle: { backgroundColor: '#eee', height: 60 }
-  }
-});
-
-export default App;
