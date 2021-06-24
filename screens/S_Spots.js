@@ -1,15 +1,19 @@
-import { Button, Input, Text, View } from 'react-native-elements';
-import { firebase } from '../firebase/fire.js';
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import { Button, Input, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { firebase } from '../firebase/fire.js';
+
 
 const S_Spots = ({ navigation }) => {
-    
+
     return <>
 
-        <Text>
-            SPOTS!
-        </Text>
+        <ScrollView>
+            
+
+            <Text>test</Text>
+            <Text>test</Text>
+
+        </ScrollView>
 
 
     </>

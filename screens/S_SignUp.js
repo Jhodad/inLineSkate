@@ -89,6 +89,7 @@ const S_SignUp = ({ navigation }) => {
                     email: email,
                     firstName: firstName,
                     lastName: lastName,
+                    type: 'user',
                 }).then((capturedUser) => {
                     console.log('data ', JSON.stringify(capturedUser))
                 }).catch((error) => {

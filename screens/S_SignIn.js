@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
-import { NavigationActions, StackActions } from 'react-navigation';
 import { firebase } from '../firebase/fire.js';
-
+import { CommonActions } from "@react-navigation/native";
 
 
 const S_SignIn = ({ navigation }) => {
@@ -17,7 +16,7 @@ const S_SignIn = ({ navigation }) => {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
                 resetHandler();  
-                //navigation.navigate('Home');
+                navigation.navigate('News');
             })
             .catch(error => {
                 switch (error.code) {
@@ -44,13 +43,22 @@ const S_SignIn = ({ navigation }) => {
     }
 
     const resetHandler = () => {
+        navigation.dispatch({
+            ...CommonActions.reset({
+                index:0,
+                routes: [{name: 'News'}]
+            })
+        })
+    };        
+    /*
+    const resetHandler = () => {
         navigation.dispatch(StackActions.reset({
             index: 0,
             key: null,
-            actions: [NavigationActions.navigate({ routeName: 'News' })]
-        }))
+        })),
+        navigation.navigate('News');
     };            
-
+*/
     const showErrorAlert = (errorReceived) => {
         Alert.alert(
             "ERROR:",

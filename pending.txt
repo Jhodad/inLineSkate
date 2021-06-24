@@ -1,3 +1,12 @@
+===========================================
+Roles:
+- admin		all
+- manager	can create high level content (spots, news posts)
+- member	can create low level content (guides, reviews, )
+- user		regular view only user
+
+===========================================
+
 https://rnfirebase.io/reference/
 
 Wrong password and other errors should be one: "invalid email or password" for integrity
