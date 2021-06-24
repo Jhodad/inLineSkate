@@ -7,7 +7,6 @@ import { DrawerComponent_User, DrawerComponent_Member, DrawerComponent_Manager, 
 import { firebase } from './firebase/fire';
 
 //CHECK userType inside firebase realitme database
-firebase.auth().signOut();
 
 export default function App() {
 
@@ -39,20 +38,16 @@ export default function App() {
       });
   }
 
-
-  // Use creds to select Navigation options for (userLogged ?) and (userType on database)
+console.log('========== creds: ' + creds);
+  // Use creds to select 
+  // Select Authentication stack if user is not logged in
+  // and then select DrawerComponent according to userType on database
   switch (creds) {
     case 'admin':
       console.log('switch admin');
       return (
         <NavigationContainer>
-          {
-            logged ? (
-              <DrawerComponent_Admin />
-            ) : (
-              <AuthStack />
-            )
-          }
+          <DrawerComponent_Admin />
         </NavigationContainer>
       );
       break;
@@ -60,13 +55,7 @@ export default function App() {
     case 'manager':
       return (
         <NavigationContainer>
-          {
-            logged ? (
-              <DrawerComponent_Manager />
-            ) : (
-              <AuthStack />
-            )
-          }
+          <DrawerComponent_Manager />
         </NavigationContainer>
       );
       break;
@@ -74,13 +63,7 @@ export default function App() {
     case 'member':
       return (
         <NavigationContainer>
-          {
-            logged ? (
-              <DrawerComponent_Member />
-            ) : (
-              <AuthStack />
-            )
-          }
+          <DrawerComponent_Member />
         </NavigationContainer>
       );
       break;
@@ -89,13 +72,7 @@ export default function App() {
       console.log('switch user');
       return (
         <NavigationContainer>
-          {
-            logged ? (
-              <DrawerComponent_User />
-            ) : (
-              <AuthStack />
-            )
-          }
+          <DrawerComponent_User />
         </NavigationContainer>
       );
       break;
